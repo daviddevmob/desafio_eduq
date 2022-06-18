@@ -52,43 +52,23 @@ class Character {
   Character({
     required this.id,
     required this.name,
-    this.status,
-    this.species,
-    required this.type,
-    this.gender,
     required this.image,
-    required this.created,
   });
 
   String id;
   String name;
-  Status? status;
-  Species? species;
-  String type;
-  Gender? gender;
   String image;
-  DateTime created;
 
   factory Character.fromJson(Map<String, dynamic> json) => Character(
         id: json["id"],
         name: json["name"],
-        status: statusValues.map[json["status"]],
-        species: speciesValues.map[json["species"]],
-        type: json["type"],
-        gender: genderValues.map[json["gender"]],
         image: json["image"],
-        created: DateTime.parse(json["created"]),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
-        "status": statusValues.reverse[status],
-        "species": speciesValues.reverse[species],
-        "type": type,
-        "gender": genderValues.reverse[gender],
         "image": image,
-        "created": created.toIso8601String(),
       };
 }
 

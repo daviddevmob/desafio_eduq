@@ -1,3 +1,4 @@
+import 'package:desafio_eduq/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'blinds/core_binding.dart';
@@ -25,10 +26,6 @@ class MyApp extends StatelessWidget {
       translationsKeys: Translation.translations,
       initialRoute: RouteName.splash,
       initialBinding: CoreBinding(),
-      theme: ThemeData(
-        canvasColor: Colors.transparent,
-        appBarTheme: AppBarTheme(),
-      ),
       getPages: RoutePage.pages,
     );
   }

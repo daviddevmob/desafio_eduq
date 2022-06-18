@@ -1,8 +1,8 @@
+import 'package:desafio_eduq/models/character_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-
 import '../models/result_search_characters_model.dart';
-import '../services/api/rick_and_morty/rick_morty_api_repository_interface.dart';
+import '../services/api/rick_and_morty/rick_morty_api_repository.dart';
 
 class HomeController extends GetxController {
   final RickAndMortyApiRepository rickAndMortyApiRepository = Get.find();
@@ -19,8 +19,6 @@ class HomeController extends GetxController {
     getC();
   }
 
-
-
   getC() async {
     loadScreen.value = true;
     ResultSearchCharacters? result =
@@ -36,5 +34,13 @@ class HomeController extends GetxController {
       initLoadFinish.value = true;
       searchCharacters.value = result;
     }
+  }
+
+  getSingleCharacter({required String id}) async {
+    CharacterModel newCharacter =
+        await rickAndMortyApiRepository.getSingleCharacter(
+      id: id,
+    );
+    return newCharacter;
   }
 }
